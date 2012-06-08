@@ -3,12 +3,13 @@ register = template.Library()
 
 from django.conf import settings
 
+
 @register.inclusion_tag('clippy/clippy.html')
-def clippy(element_id, size='14x110', bgcolor='#FFFFFF', wmode='opaque'):
-    static_url = getattr(settings, 'STATIC_URL', 'MEDIA_URL') # backwards comaptibility with Django 1.2
+def clippy(element_id, size='14x14', bgcolor='#FFFFFF', wmode='opaque'):
+    static_url = getattr(settings, 'STATIC_URL', 'MEDIA_URL')  # backwards comaptibility with Django 1.2
     data = {
-        'element_id':element_id,
-        'STATIC_URL':static_url,
+        'element_id': element_id,
+        'STATIC_URL': static_url,
         'wmode': wmode,
         'bgcolor': bgcolor,
     }
@@ -19,6 +20,6 @@ def clippy(element_id, size='14x110', bgcolor='#FFFFFF', wmode='opaque'):
             data['width'] = w
         if h != '':
             data['height'] = h
-            
-    return data 
+
+    return data
 
